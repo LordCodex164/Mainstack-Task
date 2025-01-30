@@ -22,7 +22,7 @@ describe("POST /product", () => {
 
         const response = await request(app_)
         .get("/api/v1/products")
-        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJiYzQxNjNhY2ZhZTE3MGNjOGNhMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI1OTUyMSwiZXhwIjoxNzM4MzQ1OTIxfQ.ppOJQBzF1sKtRS05UDn4rCUwRWBbsgeBf-FdEimvry4")
+        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJmZDE1MmUzZDdkNWNlMzY2ZGFmMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI3NjExNywiZXhwIjoxNzM4MzYyNTE3fQ.9rHM61stEIYtS_ku93nT3vPaKKns5yBVUaQKKQpihRA")
 
         console.log("response", response.body)
 
@@ -36,7 +36,7 @@ describe("POST /product", () => {
 
         const response = await request(app_)
         .get("/api/v1/products/679bbddcba47930f65947fc6")
-        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJiYzQxNjNhY2ZhZTE3MGNjOGNhMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI1OTUyMSwiZXhwIjoxNzM4MzQ1OTIxfQ.ppOJQBzF1sKtRS05UDn4rCUwRWBbsgeBf-FdEimvry4")
+        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJmZDE1MmUzZDdkNWNlMzY2ZGFmMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI3NjExNywiZXhwIjoxNzM4MzYyNTE3fQ.9rHM61stEIYtS_ku93nT3vPaKKns5yBVUaQKKQpihRA")
 
         console.log("response", response.body)
 
@@ -49,7 +49,7 @@ describe("POST /product", () => {
 
         const response = await request(app_)
         .post("/api/v1/products/create")
-        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJiYzQxNjNhY2ZhZTE3MGNjOGNhMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI1OTUyMSwiZXhwIjoxNzM4MzQ1OTIxfQ.ppOJQBzF1sKtRS05UDn4rCUwRWBbsgeBf-FdEimvry4")
+        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJmZDE1MmUzZDdkNWNlMzY2ZGFmMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI3NjExNywiZXhwIjoxNzM4MzYyNTE3fQ.9rHM61stEIYtS_ku93nT3vPaKKns5yBVUaQKKQpihRA")
         .send({
             name: "iphone11 pro",
             description: "mobile gadget",
@@ -66,7 +66,7 @@ describe("POST /product", () => {
 
         const response = await request(app_)
         .patch("/api/v1/products/679bbbac7e97598476d96d4e")
-        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJiYzQxNjNhY2ZhZTE3MGNjOGNhMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI1OTUyMSwiZXhwIjoxNzM4MzQ1OTIxfQ.ppOJQBzF1sKtRS05UDn4rCUwRWBbsgeBf-FdEimvry4")
+        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJmZDE1MmUzZDdkNWNlMzY2ZGFmMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI3NjExNywiZXhwIjoxNzM4MzYyNTE3fQ.9rHM61stEIYtS_ku93nT3vPaKKns5yBVUaQKKQpihRA")
         .send({
             name: "iphone11 pro",
             description: "edited mobile gadget",
@@ -81,7 +81,7 @@ describe("POST /product", () => {
 
         const response = await request(app_)
         .delete("/api/v1/products/679bbbc7464a25359b9135ec")
-        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJiYzQxNjNhY2ZhZTE3MGNjOGNhMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI1OTUyMSwiZXhwIjoxNzM4MzQ1OTIxfQ.ppOJQBzF1sKtRS05UDn4rCUwRWBbsgeBf-FdEimvry4")
+        .set("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWJmZDE1MmUzZDdkNWNlMzY2ZGFmMCIsIm5hbWUiOiJkYW4gdGVzdCIsImlhdCI6MTczODI3NjExNywiZXhwIjoxNzM4MzYyNTE3fQ.9rHM61stEIYtS_ku93nT3vPaKKns5yBVUaQKKQpihRA")
         
         expect(response.body).toHaveProperty("data")
         expect(response.body).toHaveProperty("message")
