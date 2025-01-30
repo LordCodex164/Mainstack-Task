@@ -1,14 +1,8 @@
-import * as bcrypt from 'bcryptjs';
 import { Request, Response, NextFunction, Router } from 'express';
-import * as jwt from 'jsonwebtoken';
 import WrongCredentialsException from '../../exceptions/WrongCredientialsException';
 import Controller from '../../interfaces/controller.interface';
-// import DataStoredInToken from '../interfaces/dataStoredInToken';
-// import TokenData from '../interfaces/tokenData.interface';
 import validationMiddleware from '../../middleware/validate';
 import CreateUserDto from './user.dto';
-import User from './user.interface';
-import userModel from '../../models/user';
 import AuthenticationService from './authUserService';
 import LogInDto from './login.dto';
 
