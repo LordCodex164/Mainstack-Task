@@ -80,6 +80,10 @@ class ProductService {
     }
 
     public async deleteProduct(id: string) {
+
+         if(!id){
+              throw new BadRequestException('Product id is required');
+          }
     
             const product = await this.productModel.findByIdAndDelete(id);
 
