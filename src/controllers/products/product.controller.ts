@@ -20,6 +20,13 @@ class ProductController {
     }
 
     private initializeRoutes(){
+
+        this.router.get(
+            `${this.path}/all`, 
+            authenticate as unknown as RequestHandler,
+            this.getAllProducts
+        )
+
         this.router.get(
         `${this.path}`, 
         authenticate as unknown as RequestHandler,
