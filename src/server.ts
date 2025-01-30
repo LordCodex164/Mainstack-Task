@@ -20,6 +20,4 @@ httpApp.get('/api/v1', (req, res) => {
   res.send('Maintack Engineering Test');
 }); 
 
-httpApp.use(notFound as unknown as express.RequestHandler);
-
 export default app;
