@@ -13,3 +13,5 @@ FROM base as production
 ENV NODE_PATH=./build
 
 RUN npm run build
+
+CMD ["npx", "nodemon", "--exec", "ts-node", "--transpile-only", "./src/server.ts"]
