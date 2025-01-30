@@ -80,15 +80,11 @@ class ProductService {
     }
 
     public async deleteProduct(id: string) {
-
-         if(!id){
-              throw new BadRequestException('Product id is required');
-          }
     
             const product = await this.productModel.findByIdAndDelete(id);
 
             if(!product){
-                throw new BadRequestException('Product not found');
+                throw new Error('Product not found');
             }
 
             return {message: 'Product deleted successfully', product};
