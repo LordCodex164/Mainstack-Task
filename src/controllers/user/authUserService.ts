@@ -23,7 +23,6 @@ class AuthUserService {
          })
 
          let newUserObject: IUser;
-         //remove the password from the user object
 
          newUserObject = newUser.toObject();
          
@@ -68,8 +67,6 @@ class AuthUserService {
         }
 
         const isPasswordMatching = await user.comparePassword(data.password);
-
-        console.log("isPasswordMatching", isPasswordMatching);
 
         if(!isPasswordMatching){
             throw new Error('Invalid password');

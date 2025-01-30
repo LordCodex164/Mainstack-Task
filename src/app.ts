@@ -5,7 +5,8 @@ import dotenv from 'dotenv';
 import errorMiddleware from './middleware/errorMiddleware';
 import Controller from './interfaces/controller.interface';
 dotenv.config();
-
+import NotFound from './exceptions/NotFound';
+import notFound from './exceptions/NotFound';
 
 class App {
 

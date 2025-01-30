@@ -1,24 +1,25 @@
 import { NextFunction, Request, Response } from "express";
 import Product, { IProduct } from "../../models/product";
 import CreateProductDto from "./createProduct.dto";
-import WrongCredentialsException from '../../exceptions/WrongCredientialsException';
-import UserNotFoundException from "../../exceptions/UserFoundException";
-import UserWithThatEmailAlreadyExistsException from "../../exceptions/UserWithThatEmailAlreadyExistsException";
 import BadRequestException from "../../exceptions/BadRequestException";
 import v2 from '../../utils/cloudinary';
 
-
-// Define a custom request type
 interface File {
   mimetype: string;
   size: number;
   path: string;
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  destination: string;
+  filename: string;
+  stream: any;
+  buffer: any;
 }
 
 interface CustomRequest extends Request {
   file?: File;
 }
-
 
 class ProductService {
 
@@ -110,7 +111,7 @@ class ProductService {
             throw new BadRequestException('Error uploading image');
           }
           const {id} = req.params;
-          const product = await Product.findByIdAndUpdate(id, {image: result.secure_url}, {new: true});
+          const product = await Product.findByIdAndUpdate(id, {imageUrl: result.secure_url}, {new: true});
           res.status(200).json({product});
         })
         

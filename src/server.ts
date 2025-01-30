@@ -2,6 +2,8 @@ import 'dotenv/config';
 import App from './app';
 import UserAuthenticationController from './controllers/user/user.controller';
 import ProductController from './controllers/products/product.controller';
+import notFound from './exceptions/NotFound';
+import express from 'express';
 
 const app = new App(
   [
@@ -17,5 +19,7 @@ const httpApp = app.getServer();
 httpApp.get('/api/v1', (req, res) => {
   res.send('Maintack Engineering Test');
 }); 
+
+httpApp.use(notFound as unknown as express.RequestHandler);
 
 export default app;

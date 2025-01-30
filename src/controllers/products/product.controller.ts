@@ -4,6 +4,7 @@ import CreateProductDto from './createProduct.dto';
 import ProductService from './product.service';
 import { authenticate } from '../../middleware/isAuth';
 import { IUser } from '../../models/user';
+import Upload from '../../interfaces/upload';
 
 export interface RequestObject extends Request {
   user: IUser;
@@ -47,8 +48,9 @@ class ProductController {
         this.deleteProduct);
 
         this.router.post(
-        `${this.path}/upload`,
+        `${this.path}/upload/:id`,
         authenticate as unknown as RequestHandler,
+        Upload.single('image') as unknown as RequestHandler,
         this.uploadProductImage as unknown as RequestHandler
         )
     }
@@ -87,6 +89,7 @@ class ProductController {
     }
 
     public uploadProductImage = async (request:Request, response:Response, next: NextFunction) => {
+         console.log(request.file, "request");
         await this.productControllerService.uploadProductImage(request, response, next);
     }
 }
