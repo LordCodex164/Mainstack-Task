@@ -1,4 +1,4 @@
-import user from "../../models/user";
+import user, { IUser } from "../../models/user";
 import CreateUserDto from "./user.dto";
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../../utils/jwt';
@@ -20,13 +20,25 @@ class AuthUserService {
 
        const newUser = await this.userModel.create({
               ...userData,
-         });
+         })
+
+         let newUserObject: IUser;
+         //remove the password from the user object
+
+         newUserObject = newUser.toObject();
+         
+         if (newUserObject) {
+             delete newUserObject.password;
+             delete newUserObject.__v;
+             delete newUserObject._id;
+         }
+
 
          const token = generateToken(newUser);
 
          const cookie = this.createCookie({token: token.token, expiresIn: token.expiresIn});
 
-         return {user: newUser, token, cookie};
+         return {user: newUserObject, token: token.token, cookie};
         }
         catch(err){
             throw new Error(err as unknown as string);
@@ -45,6 +57,16 @@ class AuthUserService {
             throw new UserNotFoundException(data.email);
         }
 
+        let newUserObject: IUser;
+
+        newUserObject = user.toObject();
+
+        if (newUserObject) {
+            delete newUserObject.password;
+            delete newUserObject.__v;
+            delete newUserObject._id;
+        }
+
         const isPasswordMatching = await user.comparePassword(data.password);
 
         console.log("isPasswordMatching", isPasswordMatching);
@@ -55,7 +77,7 @@ class AuthUserService {
 
         const token = generateToken(user);
 
-        return {user, token: token.token};
+        return {newUserObject, token: token.token};
 
     }
 }

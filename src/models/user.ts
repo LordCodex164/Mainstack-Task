@@ -3,7 +3,8 @@ import bcrypt from 'bcrypt-nodejs';
 
 export interface IUser extends Document {
   name: string;
-  password: string;
+  password?: string;
+  __v?: number;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 

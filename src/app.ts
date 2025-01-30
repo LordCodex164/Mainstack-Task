@@ -9,7 +9,7 @@ dotenv.config();
 
 class App {
 
-  public app: express.Application;
+  private app: express.Application;
 
   constructor(controllers: Controller[]) {
     this.app = express();
@@ -25,19 +25,28 @@ class App {
     });
   }
 
-  public intitializeMiddlewares() {
+  private intitializeMiddlewares() {
     this.app.use(cors());
     this.app.use(express.json());
   }
 
-  private inititializeControllers(controllers: any[]){
-    this.app.get("/", (req, res) => {
-      res.send("Hello World");
-    })
-    controllers.forEach((controller) => {
-      this.app.use(`/api/`, controller.router);
-    })
+  public getServer() {
+    return this.app;
+  }
 
+  public closeServer() {
+    return this.app.off(
+      'close',
+      () => {
+        console.log('Server closed');
+      }
+    );
+  }
+
+  private inititializeControllers(controllers: any[]){
+    controllers.forEach((controller) => {
+      this.app.use(`/api/v1`, controller.router);
+    })
   }
 
   private connectToDatabase() {

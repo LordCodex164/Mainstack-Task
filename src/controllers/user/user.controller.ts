@@ -35,9 +35,10 @@ class UserAuthenticationController implements Controller {
       const {
         cookie,
         user,
+        token
       } = await this.authenticationService.register(userData);
       response.setHeader('Set-Cookie', [cookie]);
-      response.send(user);
+      response.status(200).json({data: user});
     } catch (error) {
       next(error);
     }
@@ -47,11 +48,11 @@ class UserAuthenticationController implements Controller {
     const logInData: LogInDto = request.body;
     try{
       const {
-        user,
+        newUserObject,
         token
       } = await this.authenticationService.login(logInData);
       response.setHeader('Set-Cookie', [token]);
-      response.send(user);
+      response.send(newUserObject);
     }
     catch(error){
       next(new WrongCredentialsException());
