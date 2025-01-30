@@ -16,7 +16,7 @@ app.listen();
 
 const httpApp = app.getServer();
 
-httpApp.get('/', (req, res) => {
+httpApp.get('/api/v1', (req, res) => {
   res.send('Maintack Engineering Test');
 }); 
 
