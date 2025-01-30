@@ -35,6 +35,8 @@ This project is a simple RESTful API designed to create and manage products in a
 - **MongoDB**: NoSQL database for data storage
 - **Docker**: Containerization platform for easy deployment
 - **Postman**: API documentation and testing tool
+- **Jest**: Testing framework for unit tests
+- **Supertest**: HTTP assertions for testing APIs
 
 ## API Endpoints
 
@@ -77,8 +79,8 @@ To run the project locally, follow these steps:
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/product-management-api.git
-cd product-management-api
+git clone https://github.com/LordCodex164/Mainstack-Task.git
+cd Mainstack-Task
 ```
 
 Install dependencies:
