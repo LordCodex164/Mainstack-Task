@@ -3,7 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import errorMiddleware from './middleware/errorMiddleware';
-
+import Controller from './interfaces/controller.interface';
 dotenv.config();
 
 
@@ -11,7 +11,7 @@ class App {
 
   public app: express.Application;
 
-  constructor(controllers: any[]) {
+  constructor(controllers: Controller[]) {
     this.app = express();
     this.connectToDatabase();
     this.intitializeMiddlewares();
@@ -31,7 +31,9 @@ class App {
   }
 
   private inititializeControllers(controllers: any[]){
-
+    this.app.get("/", (req, res) => {
+      res.send("Hello World");
+    })
     controllers.forEach((controller) => {
       this.app.use(`/api/`, controller.router);
     })
