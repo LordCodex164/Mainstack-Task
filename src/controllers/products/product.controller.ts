@@ -64,7 +64,7 @@ class ProductController {
 
     private getAllProducts = async (request:Request, response:Response) => {
         const products = await this.productControllerService.getAllProducts();
-        response.status(200).json({message: "All User products", data: products});
+        response.status(200).json({message: "All Products", data: products});
     }
 
     private getUserProducts = async (req:RequestObject, response:Response) => {

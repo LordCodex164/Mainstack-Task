@@ -2,8 +2,6 @@ import 'dotenv/config';
 import App from './app';
 import UserAuthenticationController from './controllers/user/user.controller';
 import ProductController from './controllers/products/product.controller';
-import notFound from './exceptions/NotFound';
-import express from 'express';
 
 const app = new App(
   [
