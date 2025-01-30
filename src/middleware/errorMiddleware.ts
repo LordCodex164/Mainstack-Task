@@ -1,25 +1,15 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import HttpException from '../exceptions/HttpException';
 
-
-const errorMiddleware = (err:any, req:Request, res:Response, next:NextFunction) => {
-    const customErrorObj = {
-        statusCode: err.statusCode || 500,
-        message: err.message || 'Something went wrong',
-    }
-    if(err.name === "CastError") {
-        customErrorObj.message = `Resource not found. Invalid: ${err.path}`;
-        customErrorObj.statusCode = 404;
-    }
-    if(err.code === 11000) {
-        customErrorObj.message = '  Email has already been taken';
-        customErrorObj.statusCode = 400;
-    }
-    if(err.name === "ValidationError") {
-        const errorName = Object.values(err.errors).map((error:any) => error?.message).join(",")
-        customErrorObj.message = errorName;
-        customErrorObj.statusCode = 400
-    }
-    return res.status(customErrorObj.statusCode).json(customErrorObj);
+function errorMiddleware(error: HttpException, request: Request, response: Response, next: NextFunction) {
+  const status = error.status || 500;
+  const message = error.message || 'Something went wrong';
+  response
+    .status(status)
+    .send({
+      message,
+      status,
+    });
 }
 
 export default errorMiddleware;
