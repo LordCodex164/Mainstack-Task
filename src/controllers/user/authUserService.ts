@@ -1,9 +1,7 @@
 import user, { IUser } from "../../models/user";
 import CreateUserDto from "./user.dto";
-import bcrypt from 'bcryptjs';
 import { generateToken } from '../../utils/jwt';
 import TokenData from '../../interfaces/token.interface';
-import WrongCredentialsException from '../../exceptions/WrongCredientialsException';
 import UserNotFoundException from "../../exceptions/UserFoundException";
 import UserWithThatEmailAlreadyExistsException from "../../exceptions/UserWithThatEmailAlreadyExistsException";
 
