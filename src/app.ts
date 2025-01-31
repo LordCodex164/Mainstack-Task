@@ -4,9 +4,10 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import errorMiddleware from './middleware/errorMiddleware';
 import Controller from './interfaces/controller.interface';
+import * as bodyParser from 'body-parser';
+
 dotenv.config();
-import NotFound from './exceptions/NotFound';
-import notFound from './exceptions/NotFound';
+
 
 class App {
 
@@ -28,6 +29,7 @@ class App {
 
   private intitializeMiddlewares() {
     this.app.use(cors());
+    this.app.use(bodyParser.json());
     this.app.use(express.json());
   }
 
@@ -42,6 +44,10 @@ class App {
         console.log('Server closed');
       }
     );
+  } 
+  
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware as unknown as express.ErrorRequestHandler);
   }
 
   private inititializeControllers(controllers: any[]){
@@ -55,11 +61,9 @@ class App {
    .then(() => console.log('Connected to MongoDB'))
    .catch(err => console.error('Could not connect to MongoDB', err));
   }
-  
 
-  private initializeErrorHandling() {
-    this.app.use(errorMiddleware as unknown as express.ErrorRequestHandler);
-  }
+
+ 
 
 }
 
