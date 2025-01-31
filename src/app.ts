@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import errorMiddleware from './middleware/errorMiddleware';
 import Controller from './interfaces/controller.interface';
 import * as bodyParser from 'body-parser';
+import NotFound from './exceptions/NotFound';
 
 dotenv.config();
 
@@ -36,18 +37,10 @@ class App {
   public getServer() {
     return this.app;
   }
-
-  public closeServer() {
-    return this.app.off(
-      'close',
-      () => {
-        console.log('Server closed');
-      }
-    );
-  } 
   
   private initializeErrorHandling() {
     this.app.use(errorMiddleware as unknown as express.ErrorRequestHandler);
+    this.app.use(NotFound as unknown as express.RequestHandler);
   }
 
   private inititializeControllers(controllers: any[]){
